@@ -2,7 +2,7 @@
 
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import Container from "@/components/container";
 import Syntax from "@/components/syntax";
 
@@ -33,10 +33,10 @@ export default function Home() {
           </a>
         </h2>
         <p>
-          GSAP is a animation library that can be used for a variety of simpe to
-          complex web animations. The syntax is simple to understand as well as
-          being easily extensible. GSAP also has plugins to extend functionality
-          as well as keep bundle size down.
+          GSAP is a framework agnostic Javav Script animation library that can
+          be used for a variety of simpe to complex web animations. The syntax
+          is simple to understand as well as being easily extensible. GSAP also
+          has plugins to extend functionality as well as keep bundle size down.
         </p>
         <p>
           Animating can be as simple as using three methods on the{" "}
@@ -99,18 +99,22 @@ export default function Home() {
     opacty: 0,
   });
         `}</Syntax>
-
+        <h2 className="text-5xl">Examples</h2>
         <SpinButton />
+
+        <Dropdown />
       </Container>
     </main>
   );
 }
 
 function SpinButton() {
-  let animation: undefined | gsap.core.Tween;
+  const ref = useRef<HTMLDivElement>(null);
+  const anim = useRef<GSAPTween>();
+  const { contextSafe } = useGSAP({ scope: ref });
 
   useGSAP(() => {
-    animation = gsap.to(".spin-button", {
+    anim.current = gsap.to(".spin-button", {
       rotate: 180,
       x: 100,
       backgroundColor: "red",
@@ -119,19 +123,61 @@ function SpinButton() {
     });
   }, []);
 
-  const handleClick = () => {
-    if (!animation) return;
-    if (animation.progress() === 1) return animation.reverse();
-    animation.play();
-  };
+  const handleClick = contextSafe(() => {
+    if (!anim.current) return;
+    if (anim.current.paused()) return anim.current.paused(false);
+
+    anim.current.reversed(!anim.current.reversed());
+  });
 
   return (
-    <button
-      type="button"
-      className="spin-button px-6 py-4 bg-green-400 rounded"
-      onClick={handleClick}
-    >
-      Animate me
-    </button>
+    <div ref={ref}>
+      <button
+        type="button"
+        className="spin-button px-6 py-4 bg-green-400 rounded"
+        onClick={handleClick}
+      >
+        Animate me
+      </button>
+    </div>
+  );
+}
+
+function Dropdown() {
+  const [isOpen, setIsOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+  const listItems = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5"];
+
+  const handleClick = () => setIsOpen(!isOpen);
+
+  useGSAP(
+    () => {
+      gsap.to(".dropdown-list-item", {
+        opacity: isOpen ? 1 : 0,
+        x: isOpen ? 0 : -20,
+        stagger: isOpen ? 0.1 : -0.05,
+        onComplete: () => {},
+      });
+    },
+    { dependencies: [isOpen], scope: ref }
+  );
+
+  return (
+    <div className="relative" ref={ref}>
+      <button
+        type="button"
+        className="p-4 border rounded"
+        onClick={handleClick}
+      >
+        Simple menu
+      </button>
+      <ul className="p-4 space-y-2 absolute bottom-0 translate-y-full">
+        {listItems.map((item, i) => (
+          <li className="dropdown-list-item" key={`dropdown-item-${i}`}>
+            {item}
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
