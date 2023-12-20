@@ -25,7 +25,7 @@ export default function Home() {
           </h1>
         </Container>
       </div>
-      <Container className="pt-24 flex flex-col gap-y-10">
+      <Container className="py-24 flex flex-col items-start gap-y-10">
         <h2 className="text-5xl">
           Animating with{" "}
           <a href="https://gsap.com/docs/v3/" target="_blank">
@@ -99,7 +99,39 @@ export default function Home() {
     opacty: 0,
   });
         `}</Syntax>
+
+        <SpinButton />
       </Container>
     </main>
+  );
+}
+
+function SpinButton() {
+  let animation: undefined | gsap.core.Tween;
+
+  useGSAP(() => {
+    animation = gsap.to(".spin-button", {
+      rotate: 180,
+      x: 100,
+      backgroundColor: "red",
+      color: "white",
+      paused: true,
+    });
+  }, []);
+
+  const handleClick = () => {
+    if (!animation) return;
+    if (animation.progress() === 1) return animation.reverse();
+    animation.play();
+  };
+
+  return (
+    <button
+      type="button"
+      className="spin-button px-6 py-4 bg-green-400 rounded"
+      onClick={handleClick}
+    >
+      Animate me
+    </button>
   );
 }
