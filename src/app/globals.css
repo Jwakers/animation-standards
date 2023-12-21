@@ -19,3 +19,15 @@
 body {
   color: rgb(var(--foreground-rgb));
 }
+
+@layer components {
+  code {
+    background: #e2e8f0;
+    padding: 1px 4px;
+    display: inline-block;
+  }
+
+  .inline-link {
+    @apply text-blue-800 underline;
+  }
+}
