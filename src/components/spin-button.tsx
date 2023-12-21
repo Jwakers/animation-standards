@@ -33,7 +33,7 @@ export default function SpinButton() {
         className="spin-button rounded bg-green-400 px-6 py-4"
         onClick={handleClick}
       >
-        Animate me
+        Click me
       </button>
     </div>
   );

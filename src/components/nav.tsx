@@ -1,0 +1,49 @@
+"use client";
+
+import Link from "next/link";
+import Container from "./container";
+import { useRef } from "react";
+import { gsap } from "gsap";
+
+export default function Nav() {
+  const container = useRef(null);
+
+  const handleMouseEnter = (event: React.MouseEvent) => {
+    const { target } = event;
+    const { offsetWidth, offsetLeft } = target as HTMLLIElement;
+    gsap.to(".rule", {
+      width: offsetWidth,
+      x: offsetLeft,
+    });
+  };
+
+  const handleMouseLeave = () => {
+    gsap.to(".rule", {
+      width: 0,
+    });
+  };
+
+  return (
+    <nav ref={container}>
+      <Container className="relative">
+        <ul className="flex gap-6 py-6">
+          <li
+            className="text-xl"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
+            <Link href="/">Home</Link>
+          </li>
+          <li
+            className="text-xl"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
+            <Link href="/gsap">GSAP</Link>
+          </li>
+        </ul>
+        <hr className="rule absolute bottom-0 w-0 border-b border-red-400" />
+      </Container>
+    </nav>
+  );
+}
