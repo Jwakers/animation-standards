@@ -30,7 +30,7 @@ export default function SpinButton() {
     <div ref={ref}>
       <button
         type="button"
-        className="spin-button px-6 py-4 bg-green-400 rounded"
+        className="spin-button rounded bg-green-400 px-6 py-4"
         onClick={handleClick}
       >
         Animate me
