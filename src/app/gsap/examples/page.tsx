@@ -1,5 +1,6 @@
 import Container from "@/components/container";
 import Dropdown from "@/components/dropdown";
+import ExplodingText from "@/components/exploding-text";
 import RippleButton from "@/components/ripple-button";
 
 export default function ExamplesPage() {
@@ -11,10 +12,11 @@ export default function ExamplesPage() {
         <h2 className="text-5xl">Buttons</h2>
         <RippleButton />
 
+        <h2 className="text-5xl">Text</h2>
+        <ExplodingText />
+
         <h2 className="text-5xl">Menus</h2>
         <Dropdown />
-
-        <h2 className="text-5xl">Text</h2>
       </Container>
     </main>
   );
