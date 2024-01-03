@@ -26,7 +26,7 @@ export default function Nav() {
   return (
     <nav ref={container}>
       <Container className="relative">
-        <ul className="flex gap-6 py-6">
+        <ul className="flex gap-10 py-6">
           <li
             className="text-xl"
             onMouseEnter={handleMouseEnter}
@@ -42,7 +42,7 @@ export default function Nav() {
             <Link href="/gsap">GSAP</Link>
           </li>
         </ul>
-        <hr className="rule absolute bottom-0 w-0 border-b border-red-400" />
+        <hr className="rule absolute bottom-0 w-0 border-b border-blue-800" />
       </Container>
     </nav>
   );

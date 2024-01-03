@@ -17,7 +17,6 @@ export default function Home() {
     trigger: containerRef.current,
     start: "top 20%",
     end: "bottom top",
-    markers: true,
     scrub: 0.5,
   };
 
@@ -90,6 +89,7 @@ export default function Home() {
             d="M0,32L60,69.3C120,107,240,181,360,197.3C480,213,600,171,720,165.3C840,160,960,192,1080,202.7C1200,213,1320,203,1380,197.3L1440,192L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"
           ></path>
         </svg>
+        <div className="absolute bottom-0 z-40 h-16 w-full bg-[#0099ff]"></div>
       </div>
       <div className="h-screen"></div>
     </main>
