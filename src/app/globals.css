@@ -18,11 +18,11 @@
 html,
 body {
   width: 100%;
-  overflow-x: hidden;
 }
 
 body {
   color: rgb(var(--foreground-rgb));
+  overflow-x: hidden;
 }
 
 @layer components {

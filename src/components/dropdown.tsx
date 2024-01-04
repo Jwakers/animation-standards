@@ -3,6 +3,7 @@
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { useRef, useState } from "react";
+import clsx from "clsx";
 
 export default function Dropdown() {
   const [isOpen, setIsOpen] = useState(false);
@@ -53,7 +54,14 @@ export default function Dropdown() {
       >
         Simple menu
       </button>
-      <ul className="dropdown-list absolute bottom-0 h-0 w-full translate-y-full space-y-2 rounded border bg-white p-4 opacity-0">
+      <ul
+        className={clsx(
+          "dropdown-list absolute bottom-0 h-0 w-full translate-y-full space-y-2 rounded border bg-white p-4 opacity-0",
+          {
+            "pointer-events-none": !isOpen,
+          },
+        )}
+      >
         {listItems.map((item, i) => (
           <li className="dropdown-list-item" key={`dropdown-item-${i}`}>
             {item}

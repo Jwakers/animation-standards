@@ -1,6 +1,7 @@
 import Container from "@/components/container";
 import Dropdown from "@/components/dropdown";
 import ExplodingText from "@/components/exploding-text";
+import GridTransforms from "@/components/grid-transforms";
 import RippleButton from "@/components/ripple-button";
 
 export default function ExamplesPage() {
@@ -17,6 +18,9 @@ export default function ExamplesPage() {
 
         <h2 className="text-5xl">Menus</h2>
         <Dropdown />
+
+        <h2 className="text-5xl">Grids</h2>
+        <GridTransforms />
       </Container>
     </main>
   );
