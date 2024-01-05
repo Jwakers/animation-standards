@@ -5,6 +5,7 @@ import clsx from "clsx";
 import { gsap } from "gsap";
 import { Flip } from "gsap/Flip";
 import { useRef, useState } from "react";
+import { start } from "repl";
 
 gsap.registerPlugin(Flip);
 
@@ -14,10 +15,16 @@ export default function GridTransforms() {
   const containerRef = useRef<HTMLDivElement>(null);
   const boxes = useRef<HTMLDivElement[]>([]);
   const [gridItems, setGridItems] = useState(6);
+  const startHeight = useRef<string | number>(0);
   const { contextSafe } = useGSAP({ scope: containerRef });
 
-  const handleToggle = contextSafe(() => {
+  const saveState = () => {
     flipState.current = Flip.getState(".box");
+    startHeight.current = gsap.getProperty(containerRef.current, "height");
+  };
+
+  const handleToggle = contextSafe(() => {
+    saveState();
     setIsGrid(!isGrid);
   }) as React.MouseEventHandler<HTMLButtonElement>;
 
@@ -28,14 +35,20 @@ export default function GridTransforms() {
   const removeItem = contextSafe((index: number) => {
     const width = boxes.current[index].offsetWidth;
 
-    flipState.current = Flip.getState(".box");
+    saveState();
     boxes.current[index].style.display = "none";
 
-    Flip.from(flipState.current, {
+    if (!flipState.current) return;
+
+    const endHeight = gsap.getProperty(containerRef.current, "height");
+
+    console.log(startHeight.current, endHeight);
+
+    const flip = Flip.from(flipState.current, {
       duration: 0.5,
       absolute: true,
+      nested: true,
       onLeave: (els) => {
-        console.log("On leave", els);
         gsap.set(els, {
           width: width,
         });
@@ -45,16 +58,43 @@ export default function GridTransforms() {
         });
       },
     });
+    flip.fromTo(
+      containerRef.current,
+      {
+        height: startHeight.current,
+      },
+      {
+        height: endHeight,
+        clearProps: "height",
+        duration: flip.duration(),
+      },
+      0,
+    );
   });
 
   useGSAP(() => {
     if (!flipState.current) return;
 
-    Flip.from(flipState.current, {
+    const endHeight = gsap.getProperty(containerRef.current, "height");
+
+    const flip = Flip.from(flipState.current, {
       duration: 0.5,
       stagger: 0.05,
       absolute: true,
+      nested: true,
     });
+    flip.fromTo(
+      containerRef.current,
+      {
+        height: startHeight.current,
+      },
+      {
+        height: endHeight,
+        clearProps: "height",
+        duration: flip.duration(),
+      },
+      0,
+    );
   }, [isGrid]);
 
   return (
