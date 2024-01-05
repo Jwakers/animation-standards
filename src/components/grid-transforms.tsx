@@ -5,7 +5,6 @@ import clsx from "clsx";
 import { gsap } from "gsap";
 import { Flip } from "gsap/Flip";
 import { useRef, useState } from "react";
-import { start } from "repl";
 
 gsap.registerPlugin(Flip);
 
@@ -32,6 +31,24 @@ export default function GridTransforms() {
     setGridItems(gridItems + 1);
   };
 
+  const retainHeight = (
+    flip: gsap.core.Timeline,
+    endHeight: number | string,
+  ) => {
+    flip.fromTo(
+      containerRef.current,
+      {
+        height: startHeight.current,
+      },
+      {
+        height: endHeight,
+        clearProps: "height",
+        duration: flip.duration(),
+      },
+      0,
+    );
+  };
+
   const removeItem = contextSafe((index: number) => {
     const width = boxes.current[index].offsetWidth;
 
@@ -41,8 +58,6 @@ export default function GridTransforms() {
     if (!flipState.current) return;
 
     const endHeight = gsap.getProperty(containerRef.current, "height");
-
-    console.log(startHeight.current, endHeight);
 
     const flip = Flip.from(flipState.current, {
       duration: 0.5,
@@ -58,18 +73,7 @@ export default function GridTransforms() {
         });
       },
     });
-    flip.fromTo(
-      containerRef.current,
-      {
-        height: startHeight.current,
-      },
-      {
-        height: endHeight,
-        clearProps: "height",
-        duration: flip.duration(),
-      },
-      0,
-    );
+    retainHeight(flip, endHeight);
   });
 
   useGSAP(() => {
@@ -83,18 +87,7 @@ export default function GridTransforms() {
       absolute: true,
       nested: true,
     });
-    flip.fromTo(
-      containerRef.current,
-      {
-        height: startHeight.current,
-      },
-      {
-        height: endHeight,
-        clearProps: "height",
-        duration: flip.duration(),
-      },
-      0,
-    );
+    retainHeight(flip, endHeight);
   }, [isGrid]);
 
   return (
