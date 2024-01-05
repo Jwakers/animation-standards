@@ -3,6 +3,7 @@ import Dropdown from "@/components/dropdown";
 import ExplodingText from "@/components/exploding-text";
 import GridTransforms from "@/components/grid-transforms";
 import RippleButton from "@/components/ripple-button";
+import ScrollingCarousel from "@/components/scrolling-carousel";
 
 export default function ExamplesPage() {
   return (
@@ -21,6 +22,10 @@ export default function ExamplesPage() {
 
         <h2 className="text-5xl">Grids</h2>
         <GridTransforms />
+
+        <h2 className="text-6xl">Scroll trigger</h2>
+        <h2 className="text-5xl">Carousel</h2>
+        <ScrollingCarousel />
       </Container>
     </main>
   );
