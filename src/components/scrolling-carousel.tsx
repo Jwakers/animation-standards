@@ -55,9 +55,6 @@ export default function ScrollingCarousel() {
           );
         })}
       </div>
-      <div className="mb-96"></div>
-      <div className="mb-96"></div>
-      <div className="mb-96"></div>
     </>
   );
 }

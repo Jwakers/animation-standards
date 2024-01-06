@@ -2,8 +2,10 @@ import Container from "@/components/container";
 import Dropdown from "@/components/dropdown";
 import ExplodingText from "@/components/exploding-text";
 import GridTransforms from "@/components/grid-transforms";
+import { GrowingImage } from "@/components/growing-image";
 import RippleButton from "@/components/ripple-button";
 import ScrollingCarousel from "@/components/scrolling-carousel";
+import TiltingButton from "@/components/tilting-button";
 
 export default function ExamplesPage() {
   return (
@@ -13,6 +15,8 @@ export default function ExamplesPage() {
 
         <h2 className="text-5xl">Buttons</h2>
         <RippleButton />
+
+        <TiltingButton />
 
         <h2 className="text-5xl">Text</h2>
         <ExplodingText />
@@ -26,7 +30,10 @@ export default function ExamplesPage() {
         <h2 className="text-6xl">Scroll trigger</h2>
         <h2 className="text-5xl">Carousel</h2>
         <ScrollingCarousel />
+
+        <h2 className="text-5xl">Growing image</h2>
       </Container>
+      <GrowingImage />
     </main>
   );
 }
