@@ -5,10 +5,13 @@ import { gsap } from "gsap";
 
 export default function TiltingButton() {
   const ref = useRef<HTMLButtonElement>(null);
-  const handleEnter = () => {
-    if (!ref.current) return;
+  const duration = 250;
 
-    ref.current.style.transition = "";
+  const handleEnter = () => {
+    setTimeout(() => {
+      if (!ref.current) return;
+      ref.current.style.transition = "";
+    }, duration);
   };
 
   const handleMove: React.MouseEventHandler<HTMLButtonElement> = (e) => {
@@ -32,7 +35,7 @@ export default function TiltingButton() {
 
   const handleLeave = () => {
     if (!ref.current) return;
-    ref.current.style.transition = "transform 250ms";
+    ref.current.style.transition = `transform ${250}ms`;
     ref.current.style.transform =
       "matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)";
   };

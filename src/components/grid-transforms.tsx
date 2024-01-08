@@ -17,15 +17,20 @@ export default function GridTransforms() {
   const startHeight = useRef<string | number>(0);
   const { contextSafe } = useGSAP({ scope: containerRef });
 
-  const saveState = () => {
-    flipState.current = Flip.getState(".box");
+  const saveState = contextSafe(() => {
+    flipState.current = Flip.getState(
+      [".box", ".skeleton-image", ".skeleton-text"],
+      {
+        props: "borderRadius",
+      },
+    );
     startHeight.current = gsap.getProperty(containerRef.current, "height");
-  };
+  });
 
-  const handleToggle = contextSafe(() => {
+  const handleToggle = () => {
     saveState();
     setIsGrid(!isGrid);
-  }) as React.MouseEventHandler<HTMLButtonElement>;
+  };
 
   const addItem = () => {
     setGridItems(gridItems + 1);
@@ -63,6 +68,7 @@ export default function GridTransforms() {
       duration: 0.5,
       absolute: true,
       nested: true,
+      simple: true,
       onLeave: (els) => {
         gsap.set(els, {
           width: width,
@@ -83,7 +89,6 @@ export default function GridTransforms() {
 
     const flip = Flip.from(flipState.current, {
       duration: 0.5,
-      stagger: 0.05,
       absolute: true,
       nested: true,
     });
@@ -97,7 +102,7 @@ export default function GridTransforms() {
           className="rounded bg-blue-800 p-4 text-white"
           onClick={handleToggle}
         >
-          Change to {isGrid ? "columns" : "grid"}
+          Change to {isGrid ? "rows" : "grid"}
         </button>
         <button
           className="rounded bg-blue-800 p-4 text-white"
@@ -118,8 +123,28 @@ export default function GridTransforms() {
             key={i}
             onClick={() => removeItem(i)}
             ref={(el) => (boxes.current[i] = el as HTMLDivElement)}
-            className={clsx("box w-full bg-blue-800", isGrid ? "h-40" : "h-20")}
-          ></div>
+            className={clsx(
+              "box flex w-full gap-2 bg-blue-800 p-2",
+              isGrid ? "h-40 flex-col" : "h-20",
+            )}
+          >
+            <div
+              className={clsx(
+                "skeleton-image h-20 w-full bg-blue-600",
+                isGrid
+                  ? "h-20 w-full rounded-none"
+                  : "aspect-square h-full w-auto rounded-[40px]",
+              )}
+            ></div>
+            <div
+              className={clsx(
+                "skeleton-text bg-blue-600 p-2 text-xs text-white",
+                isGrid ? "h-auto w-40" : "h-full w-1/2",
+              )}
+            >
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </div>
+          </div>
         ))}
       </div>
     </>
