@@ -25,7 +25,7 @@ export default function Nav() {
 
   return (
     <nav ref={container}>
-      <Container className="relative">
+      <Container className="absolute inset-x-0 top-0">
         <ul className="flex gap-10 py-6">
           <li
             className="text-xl"
@@ -40,6 +40,13 @@ export default function Nav() {
             onMouseLeave={handleMouseLeave}
           >
             <Link href="/gsap">GSAP</Link>
+          </li>
+          <li
+            className="text-xl"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
+            <Link href="/gsap/examples">Examples</Link>
           </li>
         </ul>
         <hr className="rule absolute bottom-0 w-0 border-b border-blue-800" />

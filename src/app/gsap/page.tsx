@@ -33,10 +33,10 @@ export default function GsapPage() {
           properties. For example:
         </p>
         <Syntax language="javascript">{`
-    gsap.to(".example", {
-      x: 100,
-      color: blue,
-    });
+gsap.to(".example", {
+  x: 100,
+  color: blue,
+});
           `}</Syntax>
         <p>
           This will take the element/s and animate change the colour to blue and
@@ -47,11 +47,11 @@ export default function GsapPage() {
           property to space out their animations.
         </p>
         <Syntax language="javascript">{`
-    gsap.to(".example", {
-      x: 100,
-      color: blue,
-      stagger: 0.5
-    });
+gsap.to(".example", {
+  x: 100,
+  color: blue,
+  stagger: 0.5
+});
           `}</Syntax>
         <p>
           The <code>gsap.from</code> method is very similar but in reverse,
@@ -64,11 +64,11 @@ export default function GsapPage() {
           the second, for example:
         </p>
         <Syntax language="javascript">{`
-    gsap.fromTo(".example", {
-      scale: 0.5,
-    }, {
-      scale: 1
-    });
+gsap.fromTo(".example", {
+  scale: 0.5,
+}, {
+  scale: 1
+});
           `}</Syntax>
         <p>
           One last basic but important method on gsap is <code>gsap.set()</code>
@@ -78,9 +78,9 @@ export default function GsapPage() {
           rigging an animation that is dynamially triggered.
         </p>
         <Syntax language="javascript">{`
-    gsap.set(".example", {
-      opacty: 0,
-    });
+gsap.set(".example", {
+  opacty: 0,
+});
           `}</Syntax>
 
         <h2 className="text-5xl">

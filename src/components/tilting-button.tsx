@@ -8,7 +8,7 @@ export default function TiltingButton() {
   const handleEnter = () => {
     if (!ref.current) return;
 
-    ref.current.style.transition = null;
+    ref.current.style.transition = "";
   };
 
   const handleMove: React.MouseEventHandler<HTMLButtonElement> = (e) => {
