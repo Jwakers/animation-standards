@@ -3,6 +3,7 @@
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Image from "next/image";
 import { useRef } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -65,11 +66,13 @@ export function GrowingImage() {
             Scroll back up
           </h2>
         </div>
-        <img
+        <Image
           ref={imageRef}
           className="block w-[600px] object-cover"
           src="https://picsum.photos/1200/900"
           alt=""
+          width={600}
+          height={300}
         />
       </div>
       <div className="py-80"></div>

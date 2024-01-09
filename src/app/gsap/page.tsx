@@ -1,5 +1,6 @@
 import Container from "@/components/container";
 import Syntax from "@/components/syntax";
+import Link from "next/link";
 
 export default function GsapPage() {
   return (
@@ -15,6 +16,7 @@ export default function GsapPage() {
             GSAP
           </a>
         </h1>
+
         <p>
           GSAP is a framework agnostic Javav Script animation library that can
           be used for a variety of simpe to complex web animations. The syntax
@@ -138,6 +140,83 @@ tl.to(
           .
         </p>
 
+        <h2 className="text-5xl">
+          <a
+            href="https://gsap.com/docs/v3/Plugins/Flip/"
+            target="_blank"
+            className="inline-link"
+          >
+            Flip
+          </a>
+        </h2>
+
+        <blockquote
+          className="border-l-2 border-gray-200 pl-4"
+          cite="https://gsap.com/docs/v3/Plugins/Flip/"
+        >
+          Flip plugin lets you seamlessly transition between two states even if
+          there are sweeping changes to the structure of the DOM that would
+          normally cause elements to jump. Flip records the current
+          position/size/rotation of your elements, then you make whatever
+          changes you want, and then Flip applies offsets to make them LOOK like
+          they never moved/resized/rotated and then animates the removal of
+          those offsets!
+        </blockquote>
+
+        <p>
+          Here is an example of flip used to transition the states of a grid
+          layout. The example can be seen{" "}
+          <Link href="/gsap/examples" className="inline-link">
+            here
+          </Link>
+          .
+        </p>
+
+        <p>
+          Before transition the current state of the element is saved into a ref
+          using:
+        </p>
+
+        <Syntax language="javascript">{`flipState.current = Flip.getState(
+  [".box", ".skeleton-image", ".skeleton-text"],
+  {
+    props: "borderRadius",
+  },
+);`}</Syntax>
+
+        <p>
+          This code tells GSAP I want to monitor the position and size of all of
+          these elemnts. Additionally I have added <code>borderRadius</code> as
+          a prop to make sure that CSS property is transitioned too. By default
+          Flip wlll only transition the position and size of an element.
+        </p>
+        <p>
+          Using the <code>isGrid</code> state I have conditionally applied
+          classes to the grid items and their children. When this state changes,
+          all the classes get updated and Flip is used to animate from the
+          previous state (which was saved in a ref) to the next state.{" "}
+          <code>onLeave</code> tells gsap what to do with elements that get
+          removed from the DOM. So in this case I set their width (to prevent
+          them stretching to 100%) then fade them out whilst reducing the scale
+          to 0;
+        </p>
+
+        <Syntax language="javascript">{`const flip = Flip.from(flipState.current, {
+  duration: 0.5,
+  absolute: true,
+  nested: true,
+  simple: true,
+  onLeave: (els) => {
+    gsap.set(els, {
+      width: width,
+    });
+    gsap.to(els, {
+      opacity: 0,
+      scale: 0,
+    });
+  },
+});`}</Syntax>
+
         <h2 className="text-5xl">GSAP with react</h2>
         <p>
           There are a few considerations when using{" "}
@@ -149,7 +228,10 @@ tl.to(
             GSAP with react.
           </a>
         </p>
-        <blockquote className="border-l-2 border-gray-200 pl-4">
+        <blockquote
+          className="border-l-2 border-gray-200 pl-4"
+          cite="https://gsap.com/resources/React"
+        >
           <code>useGSAP()</code> is a drop-in replacement for{" "}
           <code>useEffect()</code> or <code>useLayoutEffect()</code> that
           automatically handles cleanup using <code>gsap.context()</code>.

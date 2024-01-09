@@ -26,14 +26,7 @@ export default function ExamplesPage() {
 
         <h2 className="text-5xl">Grids</h2>
         <GridTransforms />
-
-        <h2 className="text-6xl">Scroll trigger</h2>
-        <h2 className="text-5xl">Carousel</h2>
-        <ScrollingCarousel />
-
-        <h2 className="text-5xl">Growing image</h2>
       </Container>
-      <GrowingImage />
     </main>
   );
 }

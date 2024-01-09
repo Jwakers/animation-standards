@@ -48,6 +48,13 @@ export default function Nav() {
           >
             <Link href="/gsap/examples">Examples</Link>
           </li>
+          <li
+            className="text-xl"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
+            <Link href="/gsap/scroll-trigger">Scroll trigger</Link>
+          </li>
         </ul>
         <hr className="rule absolute bottom-0 w-0 border-b border-blue-800" />
       </Container>
