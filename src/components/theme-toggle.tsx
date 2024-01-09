@@ -66,7 +66,7 @@ export default function ThemeToggle() {
     if (currentTheme === "dark")
       return (
         <SunIcon
-          className="w-8 text-amber-500 "
+          className="w-8 text-white"
           role="button"
           onClick={() => setToggle("light")}
         />
@@ -74,7 +74,7 @@ export default function ThemeToggle() {
 
     return (
       <MoonIcon
-        className="w-8 text-gray-900 "
+        className="w-8 text-gray-900"
         role="button"
         onClick={() => setToggle("dark")}
       />

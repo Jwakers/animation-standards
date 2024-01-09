@@ -151,20 +151,20 @@ export default function LandingReveal() {
           ))}
         </h1>
       </div>
-      <div className="loader-wrapper fixed inset-0 z-50 h-screen w-screen bg-amber-400">
-        <div className="panel-orange absolute bottom-0 w-full bg-amber-500"></div>
-        <div className="panel-blue absolute bottom-0 w-full bg-blue-600"></div>
+      <div className="loader-wrapper fixed inset-0 z-50 h-screen w-screen bg-amber-400 dark:bg-slate-400">
+        <div className="panel-orange absolute bottom-0 w-full bg-amber-500 dark:bg-slate-500"></div>
+        <div className="panel-blue absolute bottom-0 w-full bg-blue-600 dark:bg-slate-100"></div>
         <div className="circle-wrapper relative flex h-full w-full items-center justify-center">
           <div className="circle-mask relative h-[80vh] w-[80vh] [clip-path:circle(49%)] [transform:translateZ(0)]">
-            <div className="circle-fill-orange absolute bottom-0 h-full w-full bg-amber-500"></div>
-            <div className="circle-fill-blue absolute top-0 w-full bg-blue-600"></div>
-            <div className="circle-fill-yellow absolute bottom-0 w-full bg-yellow-600"></div>
-            <div className="circle-moon-move relative h-full w-full rounded-full bg-amber-400"></div>
+            <div className="circle-fill-orange absolute bottom-0 h-full w-full bg-amber-500 dark:bg-slate-500"></div>
+            <div className="circle-fill-blue absolute top-0 w-full bg-blue-600 dark:bg-slate-100"></div>
+            <div className="circle-fill-yellow absolute bottom-0 w-full bg-yellow-600 dark:bg-slate-600"></div>
+            <div className="circle-moon-move relative h-full w-full rounded-full bg-amber-400 dark:bg-slate-400"></div>
           </div>
-          <div className="loader absolute bottom-10 left-10 text-8xl font-bold text-slate-950/70 mix-blend-overlay">
+          <div className="loader absolute bottom-10 left-10 text-8xl font-bold text-slate-950/70 mix-blend-overlay dark:text-white">
             <span className="loader-percent">0</span>%
           </div>
-          <div className="circle-grow-final absolute bottom-1/2 left-1/2 top-1/2 h-[80vh] w-[80vh] -translate-x-1/2 -translate-y-1/2 scale-0 bg-white [clip-path:circle(49%)]"></div>
+          <div className="circle-grow-final absolute bottom-1/2 left-1/2 top-1/2 h-[80vh] w-[80vh] -translate-x-1/2 -translate-y-1/2 scale-0 bg-white [clip-path:circle(49%)] dark:bg-slate-900"></div>
         </div>
       </div>
     </div>
