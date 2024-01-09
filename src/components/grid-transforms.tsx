@@ -4,7 +4,6 @@ import { useGSAP } from "@gsap/react";
 import clsx from "clsx";
 import { gsap } from "gsap";
 import { Flip } from "gsap/Flip";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useRef, useState } from "react";
 
 gsap.registerPlugin(Flip);
@@ -94,8 +93,6 @@ export default function GridTransforms() {
       nested: true,
     });
     retainHeight(flip, endHeight);
-
-    if (!isGrid) ScrollTrigger.refresh(true);
   }, [isGrid]);
 
   return (

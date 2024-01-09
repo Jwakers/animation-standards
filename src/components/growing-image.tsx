@@ -12,6 +12,10 @@ export function GrowingImage() {
   const imageRef = useRef<HTMLImageElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
+  const handleImageload = () => {
+    ScrollTrigger.refresh(true);
+  };
+
   useGSAP(() => {
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -68,11 +72,12 @@ export function GrowingImage() {
         </div>
         <Image
           ref={imageRef}
-          className="block w-[600px] object-cover"
+          className="block object-cover"
           src="https://picsum.photos/1200/900"
           alt=""
           width={600}
           height={300}
+          onLoad={handleImageload}
         />
       </div>
       <div className="py-80"></div>
