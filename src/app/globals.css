@@ -14,12 +14,11 @@ body {
 
 @layer components {
   code {
-    background: #e2e8f0;
+    @apply inline-block bg-slate-200 dark:bg-slate-600;
     padding: 1px 4px;
-    display: inline-block;
   }
 
   .inline-link {
-    @apply text-blue-800 underline;
+    @apply text-blue-800 underline dark:text-white;
   }
 }

@@ -56,7 +56,7 @@ export default function Dropdown() {
       </button>
       <ul
         className={clsx(
-          "dropdown-list absolute bottom-0 h-0 w-full translate-y-full space-y-2 rounded border bg-white p-4 opacity-0",
+          "dropdown-list absolute bottom-0 h-0 w-full translate-y-full space-y-2 rounded border bg-white p-4 opacity-0 dark:bg-slate-900",
           {
             "pointer-events-none": !isOpen,
           },

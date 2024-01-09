@@ -64,7 +64,7 @@ export function GrowingImage() {
         className="relative my-20 flex w-full items-center justify-center"
       >
         <div className="content absolute hidden text-center">
-          <h2 className="max-w-[800px] text-balance text-5xl text-blue-800">
+          <h2 className="max-w-[800px] text-balance text-5xl text-blue-800 dark:text-white">
             All animations can work in reverse too
             <br />
             Scroll back up

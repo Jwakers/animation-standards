@@ -65,7 +65,7 @@ export default function Nav() {
         <div>
           <ThemeToggle />
         </div>
-        <hr className="rule absolute bottom-0 w-0 border-b border-blue-800" />
+        <hr className="rule absolute bottom-0 w-0 border-b border-blue-800 dark:border-slate-200" />
       </Container>
     </nav>
   );

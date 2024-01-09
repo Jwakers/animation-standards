@@ -3,11 +3,7 @@
 import { ThemeProvider } from "next-themes";
 import { useState, useEffect } from "react";
 
-type Props = {
-  children: string | React.JSX.Element | React.JSX.Element[];
-};
-
-const Provider = ({ children }: Props) => {
+const Provider = ({ children }: { children: React.ReactNode }) => {
   const [mounted, setMounted] = useState<boolean>(false);
 
   useEffect(() => {

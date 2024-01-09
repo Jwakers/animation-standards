@@ -34,12 +34,10 @@ export default function GsapPage() {
           element/s <strong>TO</strong> what is defined in the second argument
           properties. For example:
         </p>
-        <Syntax language="javascript">{`
-gsap.to(".example", {
+        <Syntax language="javascript">{`gsap.to(".example", {
   x: 100,
   color: blue,
-});
-          `}</Syntax>
+});`}</Syntax>
         <p>
           This will take the element/s and animate change the colour to blue and
           move them accross the x axis by 100 pixels.
@@ -48,13 +46,11 @@ gsap.to(".example", {
           If targeting multiple elements, you can use the <code>stagger</code>{" "}
           property to space out their animations.
         </p>
-        <Syntax language="javascript">{`
-gsap.to(".example", {
+        <Syntax language="javascript">{`gsap.to(".example", {
   x: 100,
   color: blue,
   stagger: 0.5
-});
-          `}</Syntax>
+});`}</Syntax>
         <p>
           The <code>gsap.from</code> method is very similar but in reverse,
           instead it will animate from the defined properted in the method, to
@@ -65,13 +61,11 @@ gsap.to(".example", {
           properties for more granular control animating from the frst set to
           the second, for example:
         </p>
-        <Syntax language="javascript">{`
-gsap.fromTo(".example", {
+        <Syntax language="javascript">{`gsap.fromTo(".example", {
   scale: 0.5,
 }, {
   scale: 1
-});
-          `}</Syntax>
+});`}</Syntax>
         <p>
           One last basic but important method on gsap is <code>gsap.set()</code>
           . Again takes the same arguments as <code>.to()</code> or{" "}
@@ -79,11 +73,9 @@ gsap.fromTo(".example", {
           simply set them as the starting styles. This is very useful for
           rigging an animation that is dynamially triggered.
         </p>
-        <Syntax language="javascript">{`
-gsap.set(".example", {
+        <Syntax language="javascript">{`gsap.set(".example", {
   opacty: 0,
-});
-          `}</Syntax>
+});`}</Syntax>
 
         <h2 className="text-5xl">
           <a
@@ -103,8 +95,7 @@ gsap.set(".example", {
           run.
         </p>
 
-        <Syntax language="javascript">{`
-const tl = gsap.timeline();
+        <Syntax language="javascript">{`const tl = gsap.timeline();
 tl.to(
     ".dropdown-list",
     {
@@ -119,8 +110,7 @@ tl.to(
         stagger: 0.1,
         },
         "<0.2",
-    );
-          `}</Syntax>
+    );`}</Syntax>
         <p>
           Here we are chaing two animations together. The thired argument in the
           second use of the <code>.to()</code> method says{" "}
@@ -241,13 +231,11 @@ tl.to(
           Be sure to use the <code>useGSAP()</code> hook in lieu of{" "}
           <code>useEffect()</code> whenever working with animaitons.
         </p>
-        <Syntax language="javascript">{`
-useGSAP(() => {
+        <Syntax language="javascript">{`useGSAP(() => {
     // gsap code here...
     gsap.to(".box", {x: endX}); // <-- automatically reverted
   
-  }, { scope: container }); // <-- scope is for selector text (optional)
-          `}</Syntax>
+  }, { scope: container }); // <-- scope is for selector text (optional)`}</Syntax>
 
         <h2 className="text-5xl">Static site generation</h2>
         <p>
@@ -258,8 +246,7 @@ useGSAP(() => {
           handle the animation.
         </p>
 
-        <Syntax language="javascript">{`
-export default function Dropdown() {
+        <Syntax language="javascript">{`export default function Dropdown() {
     const [isOpen, setIsOpen] = useState(false);
     const container = useRef<HTMLDivElement>(null);
     const tl = useRef<GSAPTimeline>();
@@ -317,8 +304,7 @@ export default function Dropdown() {
         </ul>
       </div>
     );
-  }
-          `}</Syntax>
+  }`}</Syntax>
         <p>
           The timeline is defined in the <code>useGSAP()</code> hook and stored
           in a ref. This prevents it being redefined every re-render and

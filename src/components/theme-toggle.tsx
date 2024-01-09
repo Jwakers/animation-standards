@@ -63,30 +63,29 @@ export default function ThemeToggle() {
   const renderThemeToggle = () => {
     const currentTheme = theme === "system" ? systemTheme : theme;
 
-    if (currentTheme === "dark") {
+    if (currentTheme === "dark")
       return (
         <SunIcon
-          className="h-6 w-6 text-amber-500 "
+          className="w-8 text-amber-500 "
           role="button"
           onClick={() => setToggle("light")}
         />
       );
-    } else {
-      return (
-        <MoonIcon
-          className="h-6 w-6 text-gray-900 "
-          role="button"
-          onClick={() => setToggle("dark")}
-        />
-      );
-    }
+
+    return (
+      <MoonIcon
+        className="w-8 text-gray-900 "
+        role="button"
+        onClick={() => setToggle("dark")}
+      />
+    );
   };
 
   return (
     <div ref={containerRef}>
       {renderThemeToggle()}
       <div className="stairs pointer-events-none fixed inset-0 z-50 grid grid-cols-5">
-        <div className="step h-0" />
+        <div className="step h-0 " />
         <div className="step h-0" />
         <div className="step h-0" />
         <div className="step h-0" />

@@ -99,13 +99,13 @@ export default function GridTransforms() {
     <>
       <div className="flex flex-wrap items-center gap-4">
         <button
-          className="rounded bg-blue-800 p-4 text-white"
+          className="rounded bg-blue-800 p-4 text-white dark:bg-slate-200 dark:text-slate-900"
           onClick={handleToggle}
         >
           Change to {isGrid ? "rows" : "grid"}
         </button>
         <button
-          className="rounded bg-blue-800 p-4 text-white"
+          className="rounded bg-blue-800 p-4 text-white dark:bg-slate-200 dark:text-slate-900"
           onClick={addItem}
         >
           Add item
@@ -124,13 +124,13 @@ export default function GridTransforms() {
             onClick={() => removeItem(i)}
             ref={(el) => (boxes.current[i] = el as HTMLDivElement)}
             className={clsx(
-              "box flex w-full gap-2 bg-blue-800 p-2",
+              "box flex w-full gap-2 bg-blue-800 p-2 dark:bg-slate-200",
               isGrid ? "h-40 flex-col" : "h-20",
             )}
           >
             <div
               className={clsx(
-                "skeleton-image h-20 bg-blue-600",
+                "skeleton-image h-20 bg-blue-600 dark:bg-slate-400",
                 isGrid
                   ? "h-20 w-full rounded-none"
                   : "aspect-square h-full w-auto rounded-[40px]",
@@ -138,12 +138,16 @@ export default function GridTransforms() {
             ></div>
             <div
               className={clsx(
-                "skeleton-text bg-blue-600 p-2 text-xs text-white",
+                "skeleton-text bg-blue-600 p-2 text-xs text-white dark:bg-slate-400",
                 isGrid ? "h-auto w-40" : "h-full w-1/2",
               )}
-            >
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            </div>
+            ></div>
+            <div
+              className={clsx(
+                "skeleton-text bg-blue-600 p-2 text-xs text-white dark:bg-slate-400",
+                isGrid ? "h-auto w-40" : "h-full w-1/2",
+              )}
+            ></div>
           </div>
         ))}
       </div>

@@ -18,12 +18,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <Provider>
-        <body className={poppins.className}>
+      <body className={poppins.className}>
+        <Provider>
           <Nav />
           {children}
-        </body>
-      </Provider>
+        </Provider>
+      </body>
     </html>
   );
 }

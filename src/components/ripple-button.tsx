@@ -33,12 +33,12 @@ export default function RippleButton() {
   return (
     <button
       type="button"
-      className="button relative overflow-hidden rounded bg-blue-800 px-6 py-4 text-white"
+      className="button relative overflow-hidden rounded bg-blue-800 px-6 py-4 text-white dark:bg-slate-200 dark:text-slate-900"
       onClick={handleClick}
       ref={ref}
     >
       Click me
-      <span className="circle absolute aspect-square w-[200%] origin-center -translate-x-1/2 -translate-y-1/2 scale-0 rounded-full bg-white"></span>
+      <span className="circle absolute aspect-square w-[200%] origin-center -translate-x-1/2 -translate-y-1/2 scale-0 rounded-full bg-white dark:bg-slate-900"></span>
     </button>
   );
 }

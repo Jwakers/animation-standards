@@ -43,7 +43,7 @@ export default function TiltingButton() {
   return (
     <button
       type="button"
-      className="button relative overflow-hidden rounded bg-blue-800 px-8 py-6 text-2xl text-white"
+      className="button relative overflow-hidden rounded bg-blue-800 px-8 py-6 text-2xl text-white dark:bg-slate-200 dark:text-slate-900"
       onMouseEnter={handleEnter}
       onMouseMove={handleMove}
       onMouseLeave={handleLeave}
