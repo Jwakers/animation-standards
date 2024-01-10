@@ -2,12 +2,11 @@
 
 import Link from "next/link";
 import Container from "./container";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { gsap } from "gsap";
 import ThemeToggle from "./theme-toggle";
 
 export default function Nav() {
-  const [isDark, setIsDark] = useState(!!localStorage.getItem("dark-mode"));
   const container = useRef(null);
 
   const handleMouseEnter = (event: React.MouseEvent) => {
@@ -23,10 +22,6 @@ export default function Nav() {
     gsap.to(".rule", {
       width: 0,
     });
-  };
-
-  const handleModeToggle = () => {
-    setIsDark(!isDark);
   };
 
   return (
