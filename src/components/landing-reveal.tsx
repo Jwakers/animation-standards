@@ -102,7 +102,7 @@ export default function LandingReveal() {
             {
               opacity: 0,
             },
-            ">-0.5",
+            "<",
           );
 
         return tl;
@@ -128,13 +128,13 @@ export default function LandingReveal() {
             rotate: 0,
             duration: 2,
             stagger: 0.04,
-            ease: "power4.out",
+            ease: "elastic.out(0.8,0.3)",
           },
         );
         return tl;
       }
 
-      master.add(counter(loader().totalDuration())).add(header());
+      master.add(counter(loader().totalDuration())).add(header(), ">-1.5");
       console.log(master);
     },
     { scope: containerRef },
